@@ -1,0 +1,70 @@
+/* Developed by: John Pham
+ * Start date: 18/06/18
+ * Version: 1.0
+ * github.com/jdcpham
+ * weiyipeng.com */
+
+
+.width-100 {
+  width:100%;
+}
+
+/*  Mobile  */
+
+.rainbow{
+  height:3px;
+  width:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  background:#333333 url('../images/index/rainbow/rainbow.svg') no-repeat center center;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  z-index: 1010;
+}
+
+.outer-container {
+  margin: auto;
+  width: 100%;
+
+}
+
+.inner-container {
+  display: grid;
+  grid-template-rows: [header-top] 150px [body-top] auto [body-bottom];
+}
+
+.body-pad {
+  padding-bottom: 60px;
+}
+
+
+/*  Tablet  */
+@media only screen and (min-width: 425px)  {
+
+  .outer-container {
+    margin: auto;
+    width: 90%;
+    padding: 0px;
+  }
+
+}
+
+/*  Desktop  */
+@media only screen and (min-width: 768px)  {
+
+  .inner-container {
+    display: grid;
+    grid-template-rows: [header-top] 120px [body-top] auto [body-bottom];
+  }
+
+  .outer-container {
+    margin: auto;
+    width: 75%;
+    padding: 0px;
+  }
+
+
+}

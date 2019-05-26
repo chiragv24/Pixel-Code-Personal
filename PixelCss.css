@@ -1,0 +1,110 @@
+a{
+    color:blue;
+}
+
+.filetype form{
+    display:inline-block;
+}
+
+.gridSize form{
+    display:inline-block;
+}
+
+html{
+    /*font-family:"Calibri";*/
+    /*background-image:linear-gradient(to right, white, blue);*/
+    background-color:#828181;
+
+}
+
+.typeOfFile, .sizeOfGrid{
+    background-color: white;
+    font-family:"Calibri";
+    width: 100%;
+}
+
+.colourPickerSlide, .colourpickerRGB{
+    margin-bottom:1%;
+}
+
+.colourPickerSlide label{
+    display:inline-block;
+    margin-right:1.5%;
+}
+
+.colourpickerRGB label{
+    margin-right:1.5%;
+}
+
+#displaySlide{
+    display:inline-block;
+    width:15%;
+    height:1.5%;
+    background: white;
+    /* transition: background 100ms; */
+}
+
+#display{
+    display:inline-block;
+    width:15%;
+    height:1.5%;
+    background: white;
+}
+
+#grid, #grid2{
+    /*border: 0.1em solid black;*/     
+    margin-left: 15%;
+    margin-top:1.5%;
+    background-color:transparent !important;
+    /* display:inline-block; */
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 6.25%;
+    height: 1.25%;
+    margin:0 1.5%
+}
+
+input[type="range"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+input[type="range"]::-webkit-color-swatch {
+    border: none;
+}
+
+input[type="number"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 6.5%;
+    height: 3.5%;
+    margin:0 1.5%;
+    padding-left:0.25%;
+}
+
+body{
+    color:white;
+}
+
+.canvases {
+    position: relative;
+}
+
+.canvases canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#frameAdder{
+    display:inline-block;
+    margin-left: 60%;
+}
+
+#frameAdderForm{
+    display:inline-block;
+}
+
+#frameAdderButton{
+    display:inline-block;
+}

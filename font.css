@@ -1,0 +1,86 @@
+/* Developed by: John Pham
+ * Start date: 18/06/18
+ * Version: 1.0
+ * github.com/jdcpham
+ * weiyipeng.com */
+
+ @font-face {
+     font-family: SFB;
+     src: url(../font/SanFrancisco/Bold.otf);
+ }
+
+ @font-face {
+     font-family: SFR;
+     src: url(../font/SanFrancisco/Regular.otf);
+ }
+
+ @font-face {
+     font-family: SFL;
+     src: url(../font/SanFrancisco/Light.otf);
+ }
+
+ @font-face {
+     font-family: RSL;
+     src: url(../font/RobotoSlab/Light.ttf);
+ }
+
+ @font-face {
+     font-family: RSR;
+     src: url(../font/RobotoSlab/Regular.ttf);
+ }
+
+ @font-face {
+       font-family: RMR;
+       src: url(../font/RobotoMono/RobotoMono-Regular.ttf);
+ }
+
+ @font-face {
+       font-family: RML;
+       src: url(../font/RobotoMono/RobotoMono-Light.ttf);
+ }
+
+ @font-face {
+       font-family: RSB;
+       src: url(../font/RobotoSlab/Bold.ttf);
+ }
+
+ @font-face {
+       font-family: RR;
+       src: url(../font/Raleway/Raleway-ExtraBold.ttf);
+ }
+
+ @font-face {
+       font-family: GM;
+       src: url(../font/Garamond/M.ttf);
+ }
+
+ @font-face {
+       font-family: GMI;
+       src: url(../font/Garamond/MI.ttf);
+ }
+
+ @font-face {
+       font-family: GR;
+       src: url(../font/Garamond/R.ttf);
+ }
+
+ @font-face {
+       font-family: GRI;
+       src: url(../font/Garamond/RI.ttf);
+ }
+
+
+
+/*  Mobile  */
+
+
+/*  Tablet  */
+@media only screen and (min-width: 425px)  {
+
+}
+
+/*  Desktop  */
+@media only screen and (min-width: 768px)  {
+
+
+}

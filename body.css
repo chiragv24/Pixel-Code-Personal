@@ -1,0 +1,25 @@
+/* Developed by: John Pham
+ * Start date: 18/06/18
+ * Version: 1.0
+ * github.com/jdcpham
+ * weiyipeng.com */
+
+
+/*  Mobile  */
+
+body {
+  background-color: #EEEEEE;
+  margin: 0;
+}
+
+
+/*  Tablet  */
+@media only screen and (min-width: 425px)  {
+
+}
+
+/*  Desktop  */
+@media only screen and (min-width: 768px)  {
+
+
+}
