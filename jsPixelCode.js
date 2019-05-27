@@ -1,76 +1,5 @@
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="PixelCss.css">
-    <link rel="stylesheet" type="text/css" href="font.css">
-    <script type="text/javascript" src="jquery-3.4.0.js"></script>
-    <script type="text/javascript" src="jsPixelCode.js"></script>
-    <script src="jqueryPixelCode.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-</head>
-
-<body>
-
-    <h1>Image Creator</h1>
-    <div class="filetype">
-        <form>
-            <label>Type Of File</label>
-            <select id="typeOfFile">
-                <option value="JPEG">JPEG</option>
-                <option value="JPG">JPG</option>
-                <option value="PNG">PNG</option>
-            </select>
-        </form>
-        <button id="selectionForFileType" onclick=saveToFile()>Save Image</button>
-        <form>
-            <label>Size of Grid</label>
-            <select id="sizeOfGrid">
-                <option value="16">16x16</option>
-            </select>
-        </form>
-        <button id="selectionForSize" onclick=drawGrid()>Draw Grid</button>
-        <input type="file" id="fileSelector"></input>
-        <button id="restore" onclick=restoreGrid()>Restore Grid</button>
-        <button id="displayLights" onclick=sendStaticImage()>Display Image</button>
-
-    </div>
-
-    <div class="colourpickerRGB">
-        <label>RGB Colour Picker</label>
-        Red<input type="number" min="0" max="255" step="1" id="red" value="255">
-        Green<input type="number" min="0" max="255" step="1" id="green" value="255">
-        Blue<input type="number" min="0" max="255" step="1" id="blue" value="255">
-        <div id="display"></div>
-    </div>
-
-    <div id = "frameAdder">
-            <form id = "frameAdderForm">
-                <select id = "frameAdderSelect" onchange = showFrame()>
-                    <option value="1">Frame 1</option>
-                </select>
-            </form>
-            <button id = "frameAdderButton" onclick = addFrame()>Add Frame</button>
-            <button id = "frameSaverButton" onclick = saveCurrentFrame()>Save Current Frame</button>
-            <button id = "frameChangerButton" onclick = changeCurrentFrame()>Change Current Frame</button>
-            <button id = "animationSenderButton" onclick = sendAnimation()>Send Animation</button>
-        </div>
-    </div>
-
-    <div class="colourpickerSlide">
-        <label>Slider Colour Picker</label>
-        Red<input type="range" min="0" max="255" step="1" id="redSlide" value="255">
-        Green<input type="range" min="0" max="255" step="1" id="greenSlide" value="255">
-        Blue<input type="range" min="0" max="255" step="1" id="blueSlide" value="255">
-        <div id="displaySlide"></div>
-    </div>
-
-    <div class="canvases">
-        <canvas id="grid2"></canvas>
-        <canvas id="grid"></canvas>
-    </div>
-
-    <script>
-        let canvas = document.getElementById("grid");
+window.onload = function() {
+    let canvas = document.getElementById("grid");
         let ctx = canvas.getContext("2d");
         canvas.height = (screen.height) * 0.6;
         canvas.width = canvas.height;
@@ -85,7 +14,6 @@
         let currentFrameData = [];
 
         function getImgData() {
-            let sizeSelector = document.getElementById("sizeOfGrid").value;
             let rowSeparation = canvas.height / 16;
             let allPixels = [];
             //CHANGE ROWSEPARATIONS.LENGTH TO 16
@@ -108,7 +36,6 @@
                 img.onload = () => {
                     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                     previewOnCanvas();
-                    let canvasBeforeLines = previewOnCanvas();
                     ctx.globalCompositeOperation = "source-over";
                     drawGrid();
                     return img;
@@ -218,7 +145,7 @@
             return imageData;
         }
 
-        function sendStaticImage(){
+        function makeJSON(){
             let scaledImage = scaleImage(canvas);
             scaledImage = JSON.stringify(scaledImage.finalPixelsNoAlpha);
             let name;
@@ -252,7 +179,7 @@
         }
         
         function drawGrid(){
-            let gridSeparations = makeGrid();
+            makeGrid();
             ctx.stroke();
         }
 
@@ -286,15 +213,7 @@
             currentFrameData = [];
             currentFrameData = scaleImage(canvas).finalPixels;
         }
-        
-        // function currentFrameSave(){
-        //     let frameData = document.getElementById("frameAdderSelect");
-        //     let currentSelection = frameData.options[frameData.selectedIndex].index;
-        //     if(currentSelection == (frameData.length)-1){
-        //         saveCurrentFrame();
-        //     }
-        // }
-        
+
         function changeCurrentFrame(){
             let frameData = document.getElementById("frameAdderSelect");
             let frameToChangePos = (frameData.options[frameData.selectedIndex].index)* 1024;
@@ -329,35 +248,6 @@
             for(let i = 0; i<currentSelectionDataToSend.length;i++){
                 animationData.push(currentSelectionDataToSend[i]);
             }
-        }
-
-        function sendAnimation(){
-            let currentFrame = saveCurrentFrame();
-            for(let i = 0; i<currentFrameData.length;i++){
-                animationData.push(currentFrameData[i]);
-            }
-            if(document.getElementById("fileSelector").files[0] == undefined){
-                nameNoExt = "filename";
-            }
-            else{
-                name = document.getElementById("fileSelector").files[0].name;
-                let extensionStart = name.indexOf('.');
-                nameNoExt = name.substring(0,extensionStart);
-            }
-            let animationArrayToSend = JSON.stringify(animationData);
-            $.ajax({
-                 url:"/receiveanimation",
-                 dataType:"json",
-                 type:"POST",
-                 data: {
-                     name : nameNoExt + " animation",
-                     data : animationArrayToSend
-                     },
-                 success : (response)=> {
-                    console.log('successfully got response');
-                    console.log(response);
-		 }
-            });
         }
 
         function showFrame(){
@@ -419,7 +309,5 @@
                 display.style.background = "rgb(" + red + ", " + green + ",  " + blue + ")";
             });
         }
-
-    </script>
-</body>
-</html>
+}
+        
